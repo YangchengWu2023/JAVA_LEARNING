@@ -1,9 +1,15 @@
 package org.example;
 
 /*
+This example is to illustrate the question in (Note that this is the old v8.1.2 version, the main function has changed recently):
+    https://github.com/elastic/elasticsearch/blob/31df9689e80bad366ac20176aa7f2371ea5eb4c1/server/src/main/java/org/elasticsearch/bootstrap/Elasticsearch.java#L61
 
+Command (mainWithoutErrorHandling, main, execute) -> EnvironmentAwareCommand -> ElasticSearch (main, execute)
 
-
+ElasticSearch.main => Command.main => Command.mainWithoutErrorHandling => Command.execute
+Now the issue is, whose "execute" function will be really executed when it's triggered by superclass's function?
+The answer is the **actual runtime type** of the object. Therefore, the result should be:
+    ..... => Command.execute = = = = > ElasticSearch.execute
  */
 
 class A {
