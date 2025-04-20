@@ -1,6 +1,6 @@
 package org.example;
 
-@Author(date="abc", location="hello", name="123", dob=Priority.HIGH)
+@Author(name = "", date = "abc")
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
